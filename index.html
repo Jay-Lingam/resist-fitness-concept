@@ -147,18 +147,6 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
 .tags li{border:2px solid var(--ink);padding:3px 12px;border-radius:999px;font-size:.92rem}
 .tags.fill li{background:var(--yellow)}
 
-.calcband{background:var(--ink);color:var(--paper)}
-.calcband h2{color:var(--yellow)}
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;align-items:start}
-.calc .fields{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
-.calc .fields .full{grid-column:1/-1}
-.calc input,.calc select{background:#fff}
-.calc-out{border:3px solid var(--yellow);padding:26px;border-radius:2px;min-height:260px}
-.calc-out .big{font-family:var(--display);font-weight:900;font-size:3.4rem;line-height:1;color:var(--yellow)}
-.calc-out .row{padding:14px 0;border-top:2px solid rgba(255,255,255,.25)}
-.calc-out .row:first-child{border-top:0;padding-top:0}
-.calc-out small{color:#bdbbb5;display:block;margin-top:14px}
-
 .faq{margin-top:36px;border-bottom:3px solid var(--ink)}
 .faq details{border-top:3px solid var(--ink);padding:18px 0}
 .faq summary{font:700 1.6rem var(--display);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
@@ -174,11 +162,12 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
   .zones{grid-template-columns:1fr}
   .zone-tabs{flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:3px solid var(--ink)}
   .zone-tabs button{flex:1 1 50%;font-size:1.25rem;padding:14px}
-  .calc{grid-template-columns:1fr}
 }
 @media (max-width:820px){
   body{font-size:17px}
   nav.links a:not(.btn){display:none}
+  .logo{font-size:1.3rem}
+  nav.links .btn{white-space:nowrap;padding:10px 14px;font-size:.92rem}
   .hero .wrap,.turf .wrap,.visit .wrap{grid-template-columns:1fr}
   .facts .wrap,.plans{grid-template-columns:1fr}
   .floor-grid{grid-template-columns:1fr}
@@ -196,14 +185,13 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top">RESIST</a>
+    <a class="logo" href="#top">RESIST FITNESS STUDIO</a>
     <nav class="links" aria-label="Main">
       <a href="#floor">The floor</a>
       <a href="#start">Getting started</a>
-      <a href="#calc">Calculator</a>
       <a href="#plans">Membership</a>
       <a href="#visit">Find us</a>
-      <a class="btn" href="#trial">Book a free trial</a>
+      <a class="btn" href="#enquire">Request a callback</a>
     </nav>
   </div>
 </header>
@@ -215,7 +203,7 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
       <h1>Push<br>back.</h1>
       <p class="lede">A strength and conditioning studio on ECR, Thiruvanmiyur. Serious equipment, trainers who know your name, and a plan built around what you want.</p>
       <div class="cta">
-        <a class="btn" href="#trial">Book a free trial</a>
+        <a class="btn" href="#enquire">Request a callback</a>
         <a class="btn ghost" href="#visit">Get directions</a>
       </div>
     </div>
@@ -239,7 +227,7 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
 <section class="block weekband" id="sample-week">
   <div class="wrap">
     <h2>See your week</h2>
-    <p style="margin-top:16px">Pick a goal and see what a typical training week looks like. Your trainer adjusts it to you at the trial.</p>
+    <p style="margin-top:16px">Pick a goal and see what a typical training week looks like. Your trainer adjusts it to you when you join.</p>
     <div class="pills" id="pills" role="group" aria-label="Choose a goal"></div>
     <div class="week" id="week" aria-live="polite"></div>
   </div>
@@ -265,10 +253,10 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
   <div class="wrap">
     <div>
       <h2>Your first week</h2>
-      <p style="margin-top:20px">Walking into a new gym is the hardest rep. Here is exactly what happens after you book.</p>
+      <p style="margin-top:20px">Walking into a new gym is the hardest rep. Here is exactly what happens when you join.</p>
     </div>
     <ol class="steps">
-      <li><div><strong>Free trial session.</strong> Come in, see the floor, train once with a trainer beside you.</div></li>
+      <li><div><strong>Visit the studio.</strong> Come in, see the floor and meet the trainers before you sign up.</div></li>
       <li><div><strong>Quick assessment.</strong> We note your goal, your experience and anything we should work around.</div></li>
       <li><div><strong>Your plan.</strong> A personalised workout plan you can follow from day one.</div></li>
       <li><div><strong>Check-ins.</strong> Trainers adjust the plan as you get stronger.</div></li>
@@ -276,33 +264,13 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
   </div>
 </section>
 
-<section class="block calcband" id="calc">
-  <div class="wrap">
-    <h2>Know your numbers</h2>
-    <p style="margin-top:16px">Enter a few details to estimate the calories and protein that fit your goal.</p>
-    <div class="calc">
-      <div class="fields">
-        <div><label for="cAge">Age</label><input id="cAge" type="number" inputmode="numeric" value="25" min="16" max="80"></div>
-        <div><label for="cSex">Sex</label><select id="cSex"><option value="m">Male</option><option value="f">Female</option></select></div>
-        <div><label for="cH">Height (cm)</label><input id="cH" type="number" inputmode="numeric" value="170" min="120" max="220"></div>
-        <div><label for="cW">Weight (kg)</label><input id="cW" type="number" inputmode="numeric" value="70" min="35" max="200"></div>
-        <div class="full"><label for="cAct">How active are you now?</label>
-          <select id="cAct"><option value="1.2">Mostly sitting, no training</option><option value="1.375" selected>Training 1 to 3 days a week</option><option value="1.55">Training 3 to 5 days a week</option><option value="1.725">Training 6 to 7 days a week</option></select></div>
-        <div class="full"><label for="cGoal">Goal</label>
-          <select id="cGoal"><option value="lose">Lose fat</option><option value="keep">Stay the same weight</option><option value="gain">Build muscle</option></select></div>
-      </div>
-      <div class="calc-out" id="calcOut" aria-live="polite"></div>
-    </div>
-  </div>
-</section>
-
 <section class="block" id="plans">
   <div class="wrap">
     <h2>Membership</h2>
     <div class="plans">
-      <div class="plan"><h3>Monthly</h3><div class="price tbc">₹ to confirm</div><ul><li>Full gym access</li><li>Starter workout plan</li></ul><a class="btn ghost" href="#trial">Ask for price</a></div>
-      <div class="plan best"><h3>Quarterly</h3><div class="price tbc">₹ to confirm</div><ul><li>Full gym access</li><li>Personalised plan</li><li>Trainer check-ins</li></ul><a class="btn" href="#trial">Ask for price</a></div>
-      <div class="plan"><h3>Yearly</h3><div class="price tbc">₹ to confirm</div><ul><li>Full gym access</li><li>Personalised plan</li><li>Best value per month</li></ul><a class="btn ghost" href="#trial">Ask for price</a></div>
+      <div class="plan"><h3>Monthly</h3><div class="price tbc">₹ to confirm</div><ul><li>Full gym access</li><li>Starter workout plan</li></ul><a class="btn ghost" href="#enquire">Ask for price</a></div>
+      <div class="plan best"><h3>Quarterly</h3><div class="price tbc">₹ to confirm</div><ul><li>Full gym access</li><li>Personalised plan</li><li>Trainer check-ins</li></ul><a class="btn" href="#enquire">Ask for price</a></div>
+      <div class="plan"><h3>Yearly</h3><div class="price tbc">₹ to confirm</div><ul><li>Full gym access</li><li>Personalised plan</li><li>Best value per month</li></ul><a class="btn ghost" href="#enquire">Ask for price</a></div>
     </div>
     <p class="note">Plan names, inclusions and prices are placeholders until the studio supplies them.</p>
   </div>
@@ -338,13 +306,13 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
       <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Resist+Fitness+Studio+Thiruvanmiyur+Chennai">Open in Google Maps</a>
     </div>
 
-    <form id="trial" novalidate>
-      <h3>Book a free trial</h3>
+    <form id="enquire" novalidate>
+      <h3>Request a callback</h3>
       <label for="n">Your name</label><input id="n" required autocomplete="name">
       <label for="p">Phone number</label><input id="p" required type="tel" inputmode="tel" autocomplete="tel">
       <label for="g">Your goal</label>
       <select id="g"><option>Lose fat</option><option>Build muscle</option><option>Get stronger</option><option>Move better</option><option>Just starting out</option></select>
-      <button class="btn" type="submit">Book a free trial</button>
+      <button class="btn" type="submit">Request a callback</button>
       <p class="ok" id="ok" role="status"></p>
     </form>
   </div>
@@ -358,7 +326,7 @@ nav.links a.on{text-decoration:underline;text-decoration-thickness:3px;text-unde
   <div class="chat-head"><b>Resist assistant</b><button id="chatClose" aria-label="Close chat">×</button></div>
   <div class="chat-log" id="log" aria-live="polite"></div>
   <div class="chips" id="chips"></div>
-  <form class="chat-form" id="chatForm"><input id="chatIn" aria-label="Type your question" placeholder="Ask about timings, trials, training" autocomplete="off"><button type="submit">Send</button></form>
+  <form class="chat-form" id="chatForm"><input id="chatIn" aria-label="Type your question" placeholder="Ask about timings, membership, training" autocomplete="off"><button type="submit">Send</button></form>
 </div>
 
 <script>
@@ -380,36 +348,36 @@ goals.forEach((x,i)=>{
 });
 out.innerHTML=goals[0].t;
 
-/* ---------- trial form (demo only) ---------- */
-document.getElementById('trial').addEventListener('submit',e=>{
+/* ---------- callback form (demo only) ---------- */
+document.getElementById('enquire').addEventListener('submit',e=>{
   e.preventDefault();
   const n=document.getElementById('n').value.trim(),p=document.getElementById('p').value.trim(),ok=document.getElementById('ok');
   if(!n||p.replace(/\D/g,'').length<10){ok.style.color='var(--brick)';ok.textContent='Enter your name and a 10-digit phone number.';return;}
   ok.style.color='var(--turf)';
-  ok.textContent=`Trial requested, ${n}. (Demo: on the live site this goes straight to the studio's WhatsApp.)`;
+  ok.textContent=`Callback requested, ${n}. The team will call you soon. (Demo: on the live site this goes straight to the studio's WhatsApp.)`;
 });
 
 /* ---------- chat (scripted demo; swap reply() for an AI call on the live site) ---------- */
 const KB=[
- {k:['price','fee','cost','charge','membership','plan','rate','how much'],a:"Membership comes in monthly, quarterly and yearly options. Prices aren't loaded into this demo yet. Leave your number in the trial form and the team will share the current rates."},
+ {k:['price','fee','cost','charge','membership','plan','rate','how much'],a:"Membership comes in monthly, quarterly and yearly options. Prices aren't loaded into this demo yet. Leave your number in the callback form and the team will share the current rates."},
  {k:['time','timing','hour','open','close','sunday'],a:"Opening hours aren't loaded into this demo yet. The studio will add them before launch. Meanwhile, the Google Maps button in the Find us section shows live hours."},
  {k:['where','location','address','direction','map','park'],a:"We're on the second floor at 12 Muttukadu Road, East Coast Road, Thiruvanmiyur, Chennai 600041. The Find us section has a Google Maps button."},
- {k:['trial','visit','try','demo','book'],a:"Yes, you can book a free trial session. Fill in the short form at the bottom of the page with your name, number and goal, and a trainer will call you to fix a time."},
- {k:['trainer','personal','pt','coach'],a:"Trainers are on the floor to guide you, and members get a personalised workout plan. For one-to-one personal training, ask at your trial and the team will explain the options."},
+ {k:['trial','free'],a:"The studio doesn't offer free trials, but you're welcome to visit and see the floor before you join. Leave your number in the callback form at the bottom of the page and the team will call you."},
+ {k:['visit','try','demo','book','join','callback','call'],a:"You're welcome to visit the studio and see the floor before you join. Leave your name, number and goal in the callback form at the bottom of the page and the team will call you."},
+ {k:['trainer','personal','pt','coach'],a:"Trainers are on the floor to guide you, and members get a personalised workout plan. For one-to-one personal training, ask the team and they'll explain the options."},
  {k:['beginner','new','never','first','start'],a:"Beginners are welcome. You'll start with a guided plan on machines, three sessions a week, with a trainer teaching each movement until you're confident."},
  {k:['equipment','machine','weight','cardio','treadmill','turf','dumbbell'],a:"The floor has strength machines, racks and free weights, a turf lane for functional work, and cardio machines."},
- {k:['fat','weight loss','lose','slim'],a:"For fat loss we combine strength circuits with conditioning on the turf, about four sessions a week. A trainer will set it up at your trial."},
+ {k:['fat','weight loss','lose','slim'],a:"For fat loss we combine strength circuits with conditioning on the turf, about four sessions a week. A trainer will set it up when you join."},
  {k:['muscle','bulk','gain','strong','strength'],a:"For muscle and strength you'll follow a progressive programme across machines and free weights, with a trainer checking your form."},
- {k:['calorie','protein','diet','food','eat','nutrition'],a:"Try the calculator in the Know your numbers section. Enter your age, height, weight and goal and it estimates your daily calories and protein."},
  {k:['week','schedule','routine','split','days'],a:"The See your week section shows a sample training week for each goal. Three days a week is plenty when you're starting."},
  {k:['result','how long','progress'],a:"Most people feel stronger in two to four weeks. Visible changes usually take eight to twelve weeks of regular training."},
  {k:['bring','wear','shoes'],a:"Bring clean training shoes, a water bottle and a small towel."},
- {k:['hi','hello','hey','vanakkam'],a:"Hello! Ask me about trials, training, equipment or how to find us."}
+ {k:['hi','hello','hey','vanakkam'],a:"Hello! Ask me about membership, training, equipment or how to find us."}
 ];
 function reply(q){
   q=q.toLowerCase();
   const hit=KB.find(e=>e.k.some(w=>q.includes(w)));
-  return hit?hit.a:"I don't have that answer yet. Leave your number in the trial form and someone from the studio will call you back.";
+  return hit?hit.a:"I don't have that answer yet. Leave your number in the callback form and someone from the studio will call you back.";
 }
 const chat=document.getElementById('chat'),tog=document.getElementById('chatToggle'),log=document.getElementById('log'),chips=document.getElementById('chips'),inp=document.getElementById('chatIn');
 function say(t,who){const d=document.createElement('div');d.className='msg '+who;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;}
@@ -417,7 +385,7 @@ function ask(q){say(q,'me');const t=document.createElement('div');t.className='m
 let started=false;
 function openChat(o){chat.classList.toggle('open',o);tog.setAttribute('aria-expanded',o);
   if(o&&!started){started=true;say("Hi, I'm the Resist assistant. What would you like to know?",'bot');
-    ["Can I book a free trial?","What are the timings?","I'm a beginner","Where are you?"].forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.onclick=()=>ask(c);chips.appendChild(b);});}
+    ["What are the membership options?","What are the timings?","I'm a beginner","Where are you?"].forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.onclick=()=>ask(c);chips.appendChild(b);});}
   if(o)inp.focus();}
 tog.onclick=()=>openChat(!chat.classList.contains('open'));
 document.getElementById('chatClose').onclick=()=>{openChat(false);tog.focus();};
@@ -466,26 +434,6 @@ ZONES.forEach((z,i)=>{
   zTabs.appendChild(b);
 });
 showZone(0);
-
-/* ---------- calorie and protein estimate (Mifflin-St Jeor) ---------- */
-const cOut=document.getElementById('calcOut');
-function calc(){
-  const a=+cAge.value,h=+cH.value,w=+cW.value;
-  if(!(a>=16&&a<=80&&h>=120&&h<=220&&w>=35&&w<=200)){cOut.innerHTML='<p>Enter an age from 16 to 80, height from 120 to 220 cm and weight from 35 to 200 kg.</p>';return;}
-  const bmr=10*w+6.25*h-5*a+(cSex.value==='m'?5:-161);
-  const maint=Math.round(bmr*+cAct.value/10)*10;
-  const g=cGoal.value;
-  let target=maint,label='to stay the same weight';
-  if(g==='lose'){target=Math.max(maint-400,Math.round(bmr/10)*10);label='for steady fat loss';}
-  if(g==='gain'){target=maint+250;label='to build muscle';}
-  cOut.innerHTML=`<div class="row"><div class="big">${target.toLocaleString('en-IN')} kcal</div>per day ${label}</div>
-  <div class="row"><div class="big">${Math.round(w*1.6)} to ${Math.round(w*2.2)} g</div>protein per day</div>
-  <div class="row">Your maintenance is about ${maint.toLocaleString('en-IN')} kcal a day.</div>
-  <small>An estimate from a standard formula, not medical advice. A trainer can fine-tune it with you.</small>`;
-}
-const cAge=document.getElementById('cAge'),cSex=document.getElementById('cSex'),cH=document.getElementById('cH'),cW=document.getElementById('cW'),cAct=document.getElementById('cAct'),cGoal=document.getElementById('cGoal');
-[cAge,cSex,cH,cW,cAct,cGoal].forEach(el=>el.addEventListener('input',calc));
-calc();
 
 /* ---------- scroll progress and active nav link ---------- */
 const prog=document.getElementById('progress');
